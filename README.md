@@ -8,7 +8,7 @@ This project uses the [Swift Starter Template](https://github.com/apple/swift-ao
 ## Running Solutions
 
 - Run latest day: `swift run`
-- Run specific day: `swift run AdventOfCode --day <number>`
+- Run specific day: `swift run AdventOfCode <number>`
 - Benchmark mode: `swift run -c release AdventOfCode --benchmark <day>`
 - Run all tests: `swift test`
 - Run specific test: `swift test --filter <TestCase>/<FunctionName>`
