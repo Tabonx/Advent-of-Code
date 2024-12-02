@@ -10,12 +10,6 @@ import Algorithms
 struct Day01: AdventDay {
   var data: String
 
-  var entities: [[Int]] {
-    data.split(separator: "\n\n").map {
-      $0.split(separator: "   ").compactMap { Int($0) }
-    }
-  }
-
   func parseInput() -> (left: [Int], right: [Int]) {
     let rows = data.split(separator: "\n")
 
