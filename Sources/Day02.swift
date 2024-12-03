@@ -1,8 +1,8 @@
 //
-//  Day01.swift
+//  Day02.swift
 //  AdventOfCode
 //
-//  Created by Pavel Kroupa on 01.12.2024.
+//  Created by Pavel Kroupa on 02.12.2024.
 //
 
 import Algorithms
