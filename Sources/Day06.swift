@@ -183,33 +183,39 @@ struct Day06: AdventDay {
     var pathStates = Set<String>()
 
     while true {
-      let currentState = "\(playerRowIndex),\(playerColumnIndex),\(direction)"
-      if pathStates.contains(currentState) {
-        return true
+      guard playerRowIndex >= 0, playerRowIndex < grid.count,
+            playerColumnIndex >= 0, playerColumnIndex < grid[0].count else {
+        break
       }
-      pathStates.insert(currentState)
 
-      // Calculate next position
       let offset = direction.direction
+
+      let currentState = "\(playerRowIndex),\(playerColumnIndex),\(direction)"
+
       let newRowIndex = playerRowIndex + offset.rowOffset
       let newColumnIndex = playerColumnIndex + offset.columnOffset
 
-      if newRowIndex < 0 || newRowIndex >= grid.count ||
-        newColumnIndex < 0 || newColumnIndex >= grid[0].count {
-        return false
+      guard newRowIndex >= 0, newRowIndex < grid.count,
+            newColumnIndex >= 0, newColumnIndex < grid[0].count else {
+        break
       }
 
       if grid[newRowIndex][newColumnIndex] == .obstacle {
         direction = direction.rotateRight()
-      } else {
-        playerRowIndex = newRowIndex
-        playerColumnIndex = newColumnIndex
+        if pathStates.contains(currentState) {
+          return true
+        }
+
+        pathStates.insert(currentState)
+
+        continue
       }
 
-      if pathStates.count > grid.count * grid[0].count * 4 {
-        return true
-      }
+      playerRowIndex = newRowIndex
+      playerColumnIndex = newColumnIndex
     }
+
+    return false
   }
 
   func part2() -> Int {
